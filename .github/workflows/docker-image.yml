@@ -40,7 +40,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: latest, $(date +%s)
+          tags: latest
           
 
       # - name: Push the Docker image
