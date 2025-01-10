@@ -2,6 +2,7 @@ var express = require('express');
 var axios = require('axios');
 const { default: ical } = require('ical-generator');
 const { start } = require('repl');
+const moment = require('moment-timezone');
 
 
 // var ICalCalendarMethod = ical.
@@ -41,28 +42,31 @@ router.get('/', async function(req, res, next) {
     for (let meal of response.data.result) {
       let hour = 0;
       switch (meal.type) {
-        case "0":
+        case 0:
           hour = 9;
           break;
-        case "1":
+        case 1:
           hour = 12;
           break;
-        case "2":
+        case 2:
           hour = 18;
           break;
-        case "3":
+        case 3:
           hour = 16;
           break;
         default:
           break;
       }
 
-      // console.log(meal.date);
-      let startDate = new Date(meal.date);
-      let endDate = new Date(meal.date);
-      startDate.setHours(hour);
-      endDate.setHours(hour + 1);
+      console.log("Meal:", meal.name, " ", meal.type, " ", meal.date, " ", hour);
+      
+      let startDate = moment.tz(meal.date, 'America/New_York');
+      let endDate = moment.tz(meal.date, 'America/New_York');
+      startDate.hour(hour);
+      endDate.hour(hour + 1);
 
+    console.log("Event:", meal.name, " ", startDate, " ", endDate);
+      // return;
       calendar.createEvent({
         start: startDate,
         end: endDate,
