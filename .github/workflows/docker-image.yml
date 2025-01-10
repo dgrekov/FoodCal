@@ -43,7 +43,10 @@ jobs:
       #     tags: ghcr.io/${{ github.repository_owner }}/foodcal:latest
           
       - name: Build the Docker image
-        run: docker build . -t ghcr.io/${{ github.repository_owner }}/foodcal:lastest
+        run: docker build . -t ghcr.io/${{ github.repository_owner }}/foodcal
+
+      - name: Tag the Docker image
+        run: docker tag ghcr.io/${{ github.repository_owner }}/foodcal latest
 
       - name: Push the Docker image
         run: docker push ghcr.io/${{ github.repository_owner }}/foodcal:latest
