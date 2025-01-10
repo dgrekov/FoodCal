@@ -40,7 +40,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ github.repository_owner }}/foodcal:latest
+          tags: ghcr.io/${{ github.repository_owner }}/foodcal:latest
           
 
       # - name: Push the Docker image
