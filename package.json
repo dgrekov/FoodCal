@@ -13,6 +13,8 @@
     "http-errors": "~1.6.3",
     "ical-generator": "^6.0.1",
     "jade": "~1.11.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.46",
     "morgan": "~1.9.1"
   }
 }
