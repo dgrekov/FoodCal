@@ -40,7 +40,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: latest
+          tags: ${{ github.repository_owner }}/foodcal:latest
           
 
       # - name: Push the Docker image
