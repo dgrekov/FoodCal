@@ -58,16 +58,17 @@ router.get('/', async function(req, res, next) {
           break;
       }
 
-      console.log("Meal:", meal.name, " ", meal.type, " ", meal.date, " ", hour);
-      
+      // console.log("Meal:", meal.name, " ", meal.type, " ", meal.date, " ", hour);
+      // console.log(meal);
       let startDate = moment.tz(meal.date, 'America/New_York');
       let endDate = moment.tz(meal.date, 'America/New_York');
       startDate.hour(hour);
       endDate.hour(hour + 1);
 
-    console.log("Event:", meal.name, " ", startDate, " ", endDate);
+    // console.log("Event:", meal.name, " ", startDate, " ", endDate);
       // return;
       calendar.createEvent({
+        id: meal.uid,
         start: startDate,
         end: endDate,
         summary: meal.name
